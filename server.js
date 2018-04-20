@@ -10,3 +10,5 @@ app.engine('html', require('ejs').renderFile);
 const server = app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });
+
+app.use(express.static('public'));
