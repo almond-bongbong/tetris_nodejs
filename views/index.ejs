@@ -51,6 +51,11 @@
             <div class="ranking">
                 <div class="title">Ranking</div>
                 <ul>
+                    <% for(var i = 0; i < scores.length; i++){ %>
+                    <li>
+                        <%= "LOOP" + scores[i].id %>
+                    </li>
+                    <% } %>
                     <li>
                         <span class="num">${status.index+1}</span>
                         <span class="name">${item.id}</span>

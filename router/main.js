@@ -1,9 +1,17 @@
+var mysql      = require('mysql');
+var dbconfig   = require('../config/database.js');
+var connection = mysql.createConnection(dbconfig);
+
 module.exports = (app, fs) => {
   app.get('/', (req,res) => {
     // TODO : 점수 목록 GET 하는 로직 추가
+    connection.query('SELECT * from user', function(err, rows) {
+      if(err) throw err;
 
-    res.render('index', {
-      title: "tetris",
+      res.render('index', {
+        title: "tetris",
+        scores: rows,
+      });
     });
   });
 
