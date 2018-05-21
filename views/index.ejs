@@ -14,14 +14,14 @@
 
     <!-- JS -->
     <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js" ></script>
-    <script type="text/javascript" src="js/lib/jquery-ui.min.js" ></script>
-    <script type="text/javascript" src="js/lib/slick.min.js" ></script>
-    <script type="text/javascript" src="js/lib/circle-progress.js" ></script>
-    <script type="text/javascript" src="js/lib/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <!--<script type="text/javascript" src="js/lib/jquery-ui.min.js" ></script>-->
+    <!--<script type="text/javascript" src="js/lib/slick.min.js" ></script>-->
+    <!--<script type="text/javascript" src="js/lib/circle-progress.js" ></script>-->
+    <!--<script type="text/javascript" src="js/lib/jquery.mCustomScrollbar.concat.min.js" ></script>-->
     <script type="text/javascript" src="js/core.js" ></script>
     <script type="text/javascript" src="js/layout.js" ></script>
     <script type="text/javascript" src="js/component.js" ></script>
-    <script type="text/javascript" src="js/lcm.cardUp.js" ></script>
+    <!--<script type="text/javascript" src="js/lcm.cardUp.js" ></script>-->
     <script type="text/javascript" src="js/block.js" ></script>
     <script type="text/javascript" src="js/tetris.js" ></script>
 
@@ -53,14 +53,11 @@
                 <ul>
                     <% for(var i = 0; i < scores.length; i++){ %>
                     <li>
-                        <%= "LOOP" + scores[i].id %>
+                        <span class="num"><%= i + 1 %></span>
+                        <span class="name"><%= scores[i].id %></span>
+                        <span class="rscore"><%= scores[i].score %> 점</span>
                     </li>
                     <% } %>
-                    <li>
-                        <span class="num">${status.index+1}</span>
-                        <span class="name">${item.id}</span>
-                        <span class="rscore">${item.score} 점</span>
-                    </li>
                 </ul>
             </div>
 
@@ -133,7 +130,7 @@
     var score = $('.gameover .score .num').text();
 
     $.ajax({
-      url : '/score.do',
+      url : '/score',
       type : 'post',
       dataType : 'json',
       data : {
@@ -141,7 +138,7 @@
         score: score
       },
       success : function(data) {
-        if(data.result > 0) {
+        if(data.result === 'OK') {
           $('.save-wrap').removeClass('active');
           $('.gameover .save').hide();
 
