@@ -3,7 +3,7 @@ const dbconfig   = require('../config/database.js');
 const sql        = require('../sql/tetris');
 const connection = mysql.createConnection(dbconfig);
 
-module.exports = (app, fs) => {
+module.exports = (app) => {
     app.get('/', (req, res) => {
         connection.query(sql.getScores, function(err, rows) {
             if(err) throw err;
