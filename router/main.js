@@ -16,8 +16,7 @@ module.exports = (app) => {
 
     // TODO : 점수 POST 하는 함수 개발 필요
     app.post('/score', (req, res) => {
-        const ip = req.connection.remoteAddress;
-        connection.query(sql.regScore(req.body.id, req.body.score, ip), function(err, result) {
+        connection.query(sql.regScore(req.body.id, req.body.score), function(err, result) {
             if(err) throw err;
             console.log('result : ', result);
             res.end(JSON.stringify({'result': 'OK'}));
